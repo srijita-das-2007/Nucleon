@@ -1,21 +1,32 @@
-print("===Genetic Machinery===")
-choice=input("Enter 1 for manual input or 2 for text from file")
+print("================================")
+print("         NUCLEON")
+print("   DNA Sequence Analysis Tool")
+print("================================")
+print("Which operation do you wanna do with a sample DNA?" )
+print("1. Analyze DNA")
+print("2. Compare DNA sequences")
+print("3. Exit")
+
+choice = int(input("What do you want to do? "))
 if choice==1:
- dna=input("Enter the DNA sequence=").upper()
-else:
- file=open("sample.txt","r")
- dna=file.read().strip()
- print(dna)
- file.close()
-length=len(dna)
-validation=True
-for i in dna:
-    if i in "ATGC":
-         pass
+    source=int(input("Enter 1 for manual input or 2 for text from file= "))
+    if source==1:
+        dna=input("Enter the DNA sequence=").upper()
+    elif source==2:
+      file=open("sample.txt","r")
+      dna=file.read().strip()
+      file.close()
+      print("DNA sequence loaded= ",dna)
     else:
-        
+      print("Invalid input source.")
+    length=len(dna)
+    validation=True
+    for i in dna:
+      if i in "ATGC":
+         pass
+      else:
         validation=False
-if validation==True:
+    if validation==True:
         print("Valid Sequence")
         A=dna.count("A")
         T=dna.count("T")
@@ -67,17 +78,22 @@ if validation==True:
             
         print("The protein is ",protein)
 
-        dna2=input("Enter the 2nd DNA sequence=").upper()
-        mutations=0
-        for i in range(len(dna)):
+    else:
+     print("Invalid Sequence")
+    
+elif choice==2:
+    print("===COMPARISON OF 2 DNA SEQUENCES===")
+    dna2=input("Enter the 2nd DNA sequence=").upper()
+    mutations=0
+    for i in range(len(dna)):
          if dna[i]!=dna2[i]:
              print("Position" ,i ,":", dna[i],"-->" ,dna2[i],"= Mutation")
              mutations=mutations+1
-        print("Total no. of mutations=",mutations)
-
-
+             print("Total no. of mutations=",mutations)
 else:
-    print("Invalid Sequence")
+    print("Invalid Operation")
+
+ 
 
     
                  
