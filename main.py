@@ -65,14 +65,62 @@ if choice==1:
         print("RNA =",rna)
         
         protein=""
-        codons = {"AUG": "Methionine","GCC": "Alanine","UAA": "Stop","UAC": "Tyrosine"}
+        codons = {
+    "UUU": "Phenylalanine", "UUC": "Phenylalanine",
+    "UUA": "Leucine", "UUG": "Leucine",
+
+    "UCU": "Serine", "UCC": "Serine",
+    "UCA": "Serine", "UCG": "Serine",
+
+    "UAU": "Tyrosine", "UAC": "Tyrosine",
+    "UAA": "Stop", "UAG": "Stop",
+
+    "UGU": "Cysteine", "UGC": "Cysteine",
+    "UGA": "Stop", "UGG": "Tryptophan",
+
+    "CUU": "Leucine", "CUC": "Leucine",
+    "CUA": "Leucine", "CUG": "Leucine",
+
+    "CCU": "Proline", "CCC": "Proline",
+    "CCA": "Proline", "CCG": "Proline",
+
+    "CAU": "Histidine", "CAC": "Histidine",
+    "CAA": "Glutamine", "CAG": "Glutamine",
+
+    "CGU": "Arginine", "CGC": "Arginine",
+    "CGA": "Arginine", "CGG": "Arginine",
+
+    "AUU": "Isoleucine", "AUC": "Isoleucine",
+    "AUA": "Isoleucine", "AUG": "Methionine",
+
+    "ACU": "Threonine", "ACC": "Threonine",
+    "ACA": "Threonine", "ACG": "Threonine",
+
+    "AAU": "Asparagine", "AAC": "Asparagine",
+    "AAA": "Lysine", "AAG": "Lysine",
+
+    "AGU": "Serine", "AGC": "Serine",
+    "AGA": "Arginine", "AGG": "Arginine",
+
+    "GUU": "Valine", "GUC": "Valine",
+    "GUA": "Valine", "GUG": "Valine",
+
+    "GCU": "Alanine", "GCC": "Alanine",
+    "GCA": "Alanine", "GCG": "Alanine",
+
+    "GAU": "Aspartic acid", "GAC": "Aspartic acid",
+    "GAA": "Glutamic acid", "GAG": "Glutamic acid",
+
+    "GGU": "Glycine", "GGC": "Glycine",
+    "GGA": "Glycine", "GGG": "Glycine"
+}
         for i in range(0,len(rna),3):
             codon=rna[i:i+3]
             if len(codon)==3:
                 if (codons[codon])=="Stop":
                     break
                 else:
-                    protein=protein+(codons[codon])
+                    protein=protein+(codons[codon])+" "
             else:
                 pass
             
@@ -83,13 +131,17 @@ if choice==1:
     
 elif choice==2:
     print("===COMPARISON OF 2 DNA SEQUENCES===")
+    dna1=input("Enter the 1st DNA sequence=").upper()
     dna2=input("Enter the 2nd DNA sequence=").upper()
     mutations=0
-    for i in range(len(dna)):
-         if dna[i]!=dna2[i]:
-             print("Position" ,i ,":", dna[i],"-->" ,dna2[i],"= Mutation")
+    if len(dna1)==len(dna2):
+     for i in range(len(dna1)):
+         if dna1[i]!=dna2[i]:
+             print("Position" ,i ,":", dna1[i],"-->" ,dna2[i],"= Mutation")
              mutations=mutations+1
-             print("Total no. of mutations=",mutations)
+     print("Total no. of mutations=",mutations)
+    else:
+        print("The sequences must have the same length.")
 else:
     print("Invalid Operation")
 
